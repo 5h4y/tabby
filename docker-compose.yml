@@ -1,7 +1,8 @@
 services:
-
   tabby:
-    build: ./app
+    build:
+      context: .
+      dockerfile: app/Dockerfile
     ports:
       - "5151:5001"
     volumes:
