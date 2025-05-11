@@ -16,7 +16,6 @@ instance/
 *.env
 
 # Flask static and uploads (if dynamically generated)
-static/chords/
 uploads/
 
 # Logs and local database
