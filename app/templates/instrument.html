@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ instrument.name.title() }} Tabs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+{% include 'header.html' %}
+
+<h1>{{ instrument.name.title() }}</h1>
+
+{% if instrument.artists %}
+<div class="grid">
+    {% for artist in instrument.artists|sort(attribute='name') %}
+        <div class="artist-card">
+            <h3>{{ artist.name }}</h3>
+            {% if artist.files %}
+                <ul>
+                    {% for file in artist.files|sort %}
+                        <li>
+                            <a href="{{ url_for('view_file', instrument=instrument.name, artist=artist.name, filename=file) }}">
+                                {{ file.replace('.txt', '') }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p><em>No tabs for {{ artist.name }}</em></p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<p><em>No artists found for this instrument.</em></p>
+{% endif %}
+
+<p class="back"><a href="/">← Back to Instruments</a></p>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+services:
+
+  tabby:
+    build: ./app
+    ports:
+      - "5151:5001"
+    volumes:
+      - ./tabs:/tabs:ro
+    restart: unless-stopped

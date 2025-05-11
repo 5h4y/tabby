@@ -1,0 +1,69 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+.Python
+
+# Flask instance folder and config
+instance/
+*.cfg
+*.env
+
+# Flask static and uploads (if dynamically generated)
+static/chords/
+uploads/
+
+# Logs and local database
+*.log
+*.sqlite3
+*.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.sublime-workspace
+*.sublime-project
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Cache and temporary files
+.cache/
+*.bak
+*.tmp
+
+# Test coverage reports
+htmlcov/
+.coverage
+.tox/
+
+# Docker Compose
+docker-compose.override.yml
+docker-compose.*.yml
+!docker-compose.yml  # Explicitly keep the main compose file
+
+# Docker files
+*.pid
+*.sock
+
+# Docker volumes and data directories (if you mount locally)
+data/
+volumes/
+
+# Pytest
+.pytest_cache/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Local/experimental direcotires
+tabs/
+scripts/

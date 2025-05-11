@@ -1,0 +1,245 @@
+/* =========================
+    General Layout & Typography
+========================= */
+body {
+    font-family: sans-serif;
+    background: #fff;
+    color: #111;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+pre {
+    white-space: pre-wrap;
+    line-height: 1.4;
+}
+
+a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p.back {
+    margin-top: 2rem;
+    font-family: sans-serif;
+}
+
+/* =========================
+    Nav Bar
+========================= */
+
+.nav-card {
+    background-color: #f9f9f9;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.nav-card h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #00000;
+}
+
+.nav-card nav {
+    margin-top: 0.5rem;
+}
+
+.nav-card nav a {
+    margin: 0 1rem;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-card nav a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+    Instrument Cards
+========================= */
+
+.instrument-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.instrument-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: #111;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.instrument-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.instrument-card h2 {
+    margin-bottom: 0.5rem;
+    color: #0077cc;
+}
+
+.instrument-card p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* =========================
+    Chord Highlights in Tabs
+========================= */
+.chord {
+    cursor: pointer;
+    background-color: #eef6fc;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #0077cc;
+    white-space: nowrap;
+}
+
+/* =========================
+    Tooltip for Chord Diagrams
+========================= */
+#tooltip {
+    position: absolute;
+    display: none;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+/* =========================
+    Chord Reference (e.g., Song Chord List)
+========================= */
+.chord-ref {
+    display: inline-block;
+    margin: 4px 6px;
+    padding: 2px 6px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.chord-diagram {
+    width: 100px; /* Adjust as needed */
+    height: auto;
+}
+
+/* =========================
+    Grid for Chord Library View
+========================= */
+.root-group {
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.root-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.chord-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    flex: 1 1 150px;
+    max-width: 180px;
+    transition: transform 0.2s;
+}
+
+.chord-card:hover {
+    transform: scale(1.05);
+}
+
+.chord-card img {
+    width: 100%;
+    height: auto;
+}
+
+.chord-name {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #0077cc;
+}
+
+.artist-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 300px;
+    transition: transform 0.2s;
+}
+
+.artist-card:hover {
+    transform: scale(1.03);
+}
+
+.artist-card h3 {
+    margin-top: 0;
+    color: #000000;
+    text-align: center;
+}
+
+.artist-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.artist-card li {
+    margin-bottom: 0.5rem;
+}
+
+.artist-card li a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+    white-space: normal;
+}
+

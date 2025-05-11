@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chord Diagrams</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+{% include 'header.html' %}
+
+<h1>Chord Diagrams</h1>
+
+{% set grouped_chords = {} %}
+{% for chord_file in chords %}
+    {% set root = chord_file[0].upper() %}
+    {% if root not in grouped_chords %}
+        {% set _ = grouped_chords.update({root: []}) %}
+    {% endif %}
+    {% set _ = grouped_chords[root].append(chord_file) %}
+{% endfor %}
+
+{% for root, group in grouped_chords.items() | sort %}
+    <div class="root-group">
+        <h2 class="root-title">{{ root }}</h2>
+        <div class="grid">
+            {% for chord_file in group %}
+                <div class="chord-card">
+                    <img src="{{ url_for('static', filename='chords/' + chord_file) }}" alt="{{ chord_file }}">
+                    <div class="chord-name">{{ chord_file[:-4] }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+
+</body>
+</html>

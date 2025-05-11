@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>tabby</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+{% include 'header.html' %}
+
+{% if instruments %}
+<div class="instrument-grid">
+    {% for instrument in instruments|sort(attribute='name') %}
+        <a href="{{ url_for('instrument_page', instrument_name=instrument.name) }}" class="instrument-card">
+            <h2>{{ instrument.name.title() }}</h2>
+            <p>{{ instrument.artists | length }} Artists</p>
+		
+	    <!-- debug count
+            {% for artist in instrument.artists %}
+                <p>DEBUG - Artist: {{ artist.name }} | Files: {{ artist.files }}</p>
+            {% endfor %}
+		-->            
+
+	    <p>
+                {% set ns = namespace(tab_count=0) %}
+                {% for artist in instrument.artists %}
+                    {% set ns.tab_count = ns.tab_count + (artist.files | length) %}
+                {% endfor %}
+                {{ ns.tab_count }} Tabs 🎵
+            </p>
+
+<!-- variable scoping vs namespace method above
+	    <p>
+                {% set tab_count = 0 %}
+                {% for artist in instrument.artists %}
+                    {% set tab_count = tab_count + (artist.files | length) %}
+                {% endfor %}
+                {{ tab_count }} Tabs 🎵
+            </p>
+-->
+        </a>
+    {% endfor %}
+</div>
+{% else %}
+<p><em>No instrument folders found in your tab directory.</em></p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ filename.replace('.txt', '') }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+{% include 'header.html' %}
+
+
+  <h1>{{ filename.replace('.txt', '') }}</h1>
+  <p>
+   <a href="{{ url_for('view_file', instrument=instrument, artist=artist, filename=filename, transpose=transpose + 1) }}">Transpose +1</a> |
+   <a href="{{ url_for('view_file', instrument=instrument, artist=artist, filename=filename, transpose=transpose - 1) }}">Transpose -1</a> |
+   <a href="{{ url_for('view_file', instrument=instrument, artist=artist, filename=filename) }}">Reset</a>
+  </p>
+
+{% if chords %}
+<div>
+    <strong>Chords in this song:</strong>
+    <p>
+        {% for chord in chords %}
+            <span class="chord-ref">{{ chord }}</span>
+        {% endfor %}
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 1rem;">
+        {% for chord in chords %}
+            <div style="text-align: center;">
+                <h3 style="margin-bottom: 0.5rem;">{{ chord }}</h3>
+                <img class="chord-diagram"  src="{{ url_for('static', filename='chords/' + chord + '.svg') }}" alt="{{ chord }}" width="150">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+  <pre>{{ content | safe }}</pre>
+  <p class="back"><a href="/">← back to tabby</a></p>
+
+  <!-- tooltip container -->
+  <div id="tooltip" style="position: absolute; display: none; background: #fff; border: 1px solid #ddd; padding: 8px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 999;"></div>
+
+  <!-- tooltip script -->
+  <script>
+    const tooltip = document.getElementById('tooltip');
+
+    document.addEventListener('mousemove', (e) => {
+        if (tooltip.style.display === 'block') {
+            tooltip.style.left = `${e.pageX + 15}px`;
+            tooltip.style.top = `${e.pageY + 15}px`;
+        }
+    });
+
+    document.querySelectorAll('.chord').forEach(chordEl => {
+        chordEl.addEventListener('mouseenter', () => {
+            const chordName = chordEl.getAttribute('data-chord');
+            tooltip.innerHTML = `<img src="/static/chords/${chordName}.svg" width="150">`;
+            tooltip.style.display = 'block';
+        });
+
+        chordEl.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+            tooltip.innerHTML = '';
+        });
+    });
+  </script>
+</body>
+</html>
